@@ -1,0 +1,142 @@
+{
+  "name": "WF1 Definir Datos Reportes",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "Trigger Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "field-001",
+              "name": "proyecto",
+              "value": "Portal Pacientes Bupa",
+              "type": "string"
+            },
+            {
+              "id": "field-002",
+              "name": "ambiente",
+              "value": "staging",
+              "type": "string"
+            },
+            {
+              "id": "field-003",
+              "name": "fecha",
+              "value": "={{ $now.format('DD-MM-YYYY') }}",
+              "type": "string"
+            },
+            {
+              "id": "field-004",
+              "name": "hora",
+              "value": "={{ $now.format('HH:mm:ss') }}",
+              "type": "string"
+            },
+            {
+              "id": "field-005",
+              "name": "correo_destino",
+              "value": "jaime.quinelen@bupa.cl",
+              "type": "string"
+            },
+            {
+              "id": "field-006",
+              "name": "total_tests",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "field-007",
+              "name": "tests_pasados",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "field-008",
+              "name": "tests_fallidos",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "field-009",
+              "name": "resultado",
+              "value": "pendiente",
+              "type": "string"
+            },
+            {
+              "id": "field-010",
+              "name": "sprint",
+              "value": "Sprint-1",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0002-0002-0002-000000000002",
+      "name": "Definir Datos Reporte",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "create",
+        "owner": {
+          "__rl": true,
+          "value": "={{ $json.correo_destino.split('@')[0] }}",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "name"
+        },
+        "filePath": "=reportes/reporte-{{ $json.sprint }}-{{ $json.fecha }}.json",
+        "fileContent": "={{ JSON.stringify($json, null, 2) }}",
+        "additionalParameters": {
+          "message": "=reporte QA {{ $json.sprint }} - {{ $json.fecha }}"
+        }
+      },
+      "id": "a1b2c3d4-0003-0003-0003-000000000003",
+      "name": "Subir Reporte a GitHub",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [680, 300],
+      "credentials": {}
+    }
+  ],
+  "connections": {
+    "Trigger Manual": {
+      "main": [
+        [
+          {
+            "node": "Definir Datos Reporte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Definir Datos Reporte": {
+      "main": [
+        [
+          {
+            "node": "Subir Reporte a GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": ["QA", "Bupa", "Reportes"]
+}
