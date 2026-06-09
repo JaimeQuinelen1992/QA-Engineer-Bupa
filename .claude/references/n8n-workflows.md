@@ -72,3 +72,5 @@ Los workflows siguen el patrón `WF-X.Y-descripcion.json`:
 - `X` = módulo
 - `Y` = sub-workflow
 - Archivos versionados en `n8n/` del repositorio
+
+todo aprendizaje sirve
