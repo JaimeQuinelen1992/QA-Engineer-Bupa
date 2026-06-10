@@ -103,8 +103,8 @@ Distribución de los 11 tipos de prueba en los 4 niveles de la pirámide. La bas
 | Campo | Detalle |
 |-------|---------|
 | **% del esfuerzo** | 70% |
-| **Tipos de prueba** | Unit Testing · Automated Testing |
-| **Ambientes** | `DEV` · `UAT` · `PROD` |
+| **Tipos de prueba** | Unit Testing |
+| **Ambientes** | `DEV` |
 | **Automatización** | 100% automatizado |
 | **Responsable** | Dev Team (Unit) · QA Lead + Dev (Automated) |
 | **Característica** | Cobertura mínima exigida: **≥ 80%** |
@@ -122,22 +122,21 @@ Distribución de los 11 tipos de prueba en los 4 niveles de la pirámide. La bas
 
 ---
 
-## Mapa Completo — 11 Tipos en la Pirámide
+## Mapa Completo — 11 Tipos de Pruebas en la Pirámide
 
-| Tipo de Testing | Nivel Pirámide | Herramienta BUPA | Automatización | Ambiente | Responsable |
-|-----------------|---------------|-----------------|:--------------:|----------|-------------|
-| **Unit Testing** | Base | `Go test · Jest · Karma` | 100% Auto | DEV | Dev Team |
-| **Smoke Testing** | E2E | `Cypress · Playwright (subset crítico)` | 100% Auto | UAT · PROD | QA Lead |
-| **Integration Testing** | Service | `Postman · Newman · n8n` | Parcial | DEV · UAT · PROD | QA Lead + DevOps |
-| **Performance Testing** | Service | `Lighthouse · k6 · Artillery` | Parcial | UAT | QA Lead + DevOps |
-| **Regression Testing** | E2E | `Cypress · TestRail` | Parcial | UAT · PROD | QA Lead |
-| **Accessibility Testing** | E2E | `cypress-axe · NVDA` | Parcial | UAT | QA Lead |
-| **Automated Testing** | Base | `Cypress · Playwright` | 100% Auto | UAT · PROD | QA Lead + Dev |
-| **Security Testing (API · auth · TLS)** | Integration | `Supertest + Jest` | Parcial | DEV · UAT | QA Lead + Dev |
-| **Security Testing (XSS · CSRF · OWASP)** | E2E | `OWASP ZAP · curl · openssl` | Parcial | UAT · PROD | QA Lead + Dev |
-| **Manual Testing** | Cima | Navegador · DevTools | Manual | UAT · PROD | QA Lead |
-| **Exploratory Testing** | Cima | Charter de exploración | Manual | UAT | QA Lead |
-| **Usability Testing** | Cima | Usuarios | Manual | UAT | QA Lead |
+| Tipo de Prueba | Qué valida | Ambiente | Nivel Pirámide | Categoría |
+|---|---|---|---|---|
+| **Unit Testing** | Funciones/clases aisladas — backend (Go) y frontend (Angular) | DEV | Base / Unitarias (70%) | Frontend + Backend |
+| **Smoke Testing** | Flujos críticos básicos funcionan tras un deploy | UAT · PROD | E2E / UI (10%) | UX / UI |
+| **Integration Testing** | Comunicación entre módulos, APIs, BD y workflows | DEV · UAT · PROD | Integración (20%) | Backend |
+| **Performance Testing** | Tiempos de respuesta, carga y estrés del sistema | UAT | Integración (20%) — soporte | Backend |
+| **Regression Testing** | Que cambios nuevos no rompan funcionalidad existente | UAT · PROD | E2E / UI (10%) | UX / UI |
+| **Accessibility Testing** | Cumplimiento WCAG — lectores de pantalla, contraste, navegación teclado | UAT | E2E / UI (10%) | UX / UI |
+| **Automated Testing** | Ejecución automática de casos en cualquier nivel | UAT · PROD | Base + E2E (transversal) | Frontend + Backend |
+| **Security Testing** | Vulnerabilidades — auth, TLS, XSS, CSRF, OWASP | DEV · UAT · PROD | Integración (20%) + E2E (10%) | Backend |
+| **Manual Testing** | Validación humana de flujos sin script automatizado | UAT · PROD | Cima — Criterio Humano | UX / UI |
+| **Exploratory Testing** | Búsqueda libre de defectos sin casos predefinidos | UAT | Cima — Criterio Humano | UX / UI |
+| **Usability Testing** | Facilidad de uso percibida por usuarios reales | UAT | Cima — Criterio Humano | UX |
 
 ---
 
@@ -190,7 +189,50 @@ Para un requerimiento con **100 casos de prueba**:
 
 ---
 
+## Conceptos Base — UX, UI, Frontend, Backend
+
+| Concepto | Definición | Qué prueba QA |
+|----------|-----------|----------------|
+| **UX (User Experience)** | Experiencia general del usuario — qué tan fácil, lógico e intuitivo es usar la app | Flujos completos (Cypress/Playwright E2E) |
+| **UI (User Interface)** | La parte visual — botones, colores, tipografías, formularios | Apariencia y comportamiento visual (E2E + Accessibility) |
+| **Frontend** | Código que corre en el navegador/app del usuario (Angular en BUPA) | Jest/Karma (unitarias), Cypress/Playwright (E2E) |
+| **Backend** | Código que corre en el servidor — lógica de negocio, BD, APIs (Go en BUPA) | Go test (unitarias), Postman/Newman (integración) |
+
+> **BDD (Behavior Driven Development)** no es un nivel de la pirámide — es un enfoque aplicable en Integración (contratos de API en lenguaje de negocio) y E2E/UI (escenarios Gherkin `Given/When/Then`).
+
+---
+
+## Mapeo de Herramientas — Ambiente, Pirámide y Capa
+
+| Herramienta | Qué hace | Ambiente | Nivel Pirámide | Categoría | Tipo de Prueba |
+|---|---|---|---|---|---|
+| **Cypress E2E** | Automatiza pruebas end-to-end en navegador, simulando al usuario | UAT · PROD (smoke) | E2E / UI (10%) | UX / UI | Smoke · Regression · Accessibility · Automated |
+| **Playwright E2E** | Igual que Cypress, multi-navegador y emulación mobile | UAT · PROD (smoke) | E2E / UI (10%) | UX / UI | Smoke · Regression · Accessibility · Automated |
+| **n8n** | Automatización de workflows — conecta GitHub, Gmail, Jira sin código | DEV · UAT | Integración (20%) — soporte/orquestación | Backend | Integration · Automated |
+| **Jira** | Gestión de tickets, bugs, historias y trazabilidad de sprints | Todos (gestión) | Transversal — no técnico | — | Manual (trazabilidad) |
+| **SDD** | Las especificaciones funcionales son la fuente de verdad de los tests | Todos | Transversal — define qué se prueba en cada nivel | — | — |
+| **GitHub / GitHub Actions CI/CD** | Versionado + pipelines automáticos (lint, build, test) | DEV · UAT | Transversal — ejecuta todos los niveles automatizados | Frontend + Backend | Automated |
+| **Claude IA** | Apoyo para generar casos, detectar bugs, refactor, análisis de logs | Todos | Transversal — apoyo en todos los niveles | — | — |
+| **Agile/Scrum** | Metodología de trabajo — sprints, dailies, retros, DoD | Todos (gestión) | Transversal — marco de trabajo | — | — |
+| **Postman/Newman** | Probar APIs manual (Postman) y en CLI/CI (Newman) | DEV · UAT · PROD | Integración (20%) | Backend | Integration · Security · Automated |
+| **Jest** | Testing unitario para JS/Angular | DEV | Base / Unitarias (70%) | Frontend | Unit · Automated |
+| **Go test** | Testing unitario nativo de Go | DEV | Base / Unitarias (70%) | Backend | Unit · Automated |
+| **Azure DevOps** | Gestión de proyectos + pipelines CI/CD + Test Plans | DEV · UAT · PROD | Transversal — gestión y CI/CD | Frontend + Backend | Automated · Manual |
+| **BrowserStack** | E2E en dispositivos/navegadores reales en la nube | UAT | E2E / UI (10%) | UX / UI | Regression · Accessibility |
+| **Appium/Selenium** | E2E para apps móviles nativas y navegadores | UAT | E2E / UI (10%) | UX / UI | Smoke · Regression · Automated |
+| **Datadog** | Observabilidad y monitoreo en producción | PROD | Post-pirámide — monitoreo continuo | Backend | Performance |
+| **Docker/Kubernetes** | Contenedores y orquestación de ambientes | DEV · UAT · PROD | Soporte de infraestructura | Backend | — |
+| **Capacitor (mobile)** | Convierte apps Angular en apps nativas iOS/Android | DEV · UAT | E2E / UI (10%) — mobile | Frontend | Smoke · Regression |
+| **TestRail / Azure Test Plans** | Documentación y trazabilidad de casos de prueba | UAT | Transversal — documentación de casos | — | Manual · Exploratory · Usability |
+| **Base de Datos** | Validación de integridad, consultas y migraciones | DEV · UAT | Integración (20%) | Backend | Integration |
+
+> *Transversal* = soporte/gestión a todos los niveles, no es un nivel propio. *Post-pirámide* = ocurre después del testing, en producción. "—" = herramienta de gestión/metodología, no aplica a una capa técnica específica.
+
+---
+
 ## Referencias
 
 - Documento visual: `estandarizacion/piramide-testing.html`
 - Presentación: `estandarizacion/piramide-testing.pptx`
+
+

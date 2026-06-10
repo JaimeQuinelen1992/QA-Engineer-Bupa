@@ -10,14 +10,17 @@
 
 ---
 
+
+ESTO ME GUSTARIA DEFINIR, PERO HAY QUE REVISAR TODO CON EL EQUIPO BUPA
+
 ## Resumen del Flujo
 
 ```
-FASE 1 — Requerimiento
+FASE 1 — Requerimiento + Shift-Left
    ↓
 FASE 2 — Diseño de Pruebas
    ↓
-FASE 3 — Desarrollo + Shift-Left
+FASE 3 — Desarrollo
    ↓
 FASE 4 — Pipeline CI/CD
    ↓
@@ -32,7 +35,7 @@ FASE 7 — Cierre y Metricas
 
 ---
 
-## FASE 1 — Requerimiento
+## FASE 1 — Requerimiento + Shift-Left
 
 **Responsable:** QA Lead
 **Herramientas:** Jira · n8n · Gmail
@@ -302,12 +305,4 @@ TEST UAT → TEST PRODUCCION → DONE
 
 | Workflow | Funcion | Frecuencia | Fase |
 |----------|---------|------------|------|
-| Reporte de regresion | Post-Cypress → reporte HTML → email | Post-ejecucion | 4 / 5 |
-| Resumen diario de bugs | Bugs Jira → planilla → email | 9:00 AM diario | 5 / 6 |
-| Monitoreo nuevos tickets | Nuevos KAN Jira → notificacion | Cada 2 minutos | 5 |
-| Estado diario QA | Resumen del dia → email | 6:00 PM diario | 5 / 7 |
-| Health check ambientes | Disponibilidad UAT/PROD → alerta si caido | Cada hora | 5 / 6 |
-| Generacion SDD PDF | Jira → PDF SDD → email + mensajeria | Al crear/actualizar ticket | 1 |
-| Alerta fallos criticos | Cypress critico → Jira Highest + email + mensajeria | Tiempo real | 4 / 5 |
-| Resultado pipeline | GitHub Actions → notificacion completa | Post-pipeline | 4 |
-| Dashboard semanal | KPIs → reporte ejecutivo → email gerencia | Semanal (cierre sprint) | 7 |
+

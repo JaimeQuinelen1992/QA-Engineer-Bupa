@@ -45,6 +45,10 @@
 | **Integracion** | 20% | Postman / Newman / N8N | APIs REST, workflows, contratos SDD |
 | **E2E / UI** | 10% | Playwright / Cypress / Appium / Selenium | Web (Go/Angular/Capacitor), BrowserStack mobile |
 
+> **BDD no es un nivel propio de la piramide**, es un enfoque que se aplica dentro de los niveles existentes:
+> - **Integracion (20%):** contratos de API en lenguaje de negocio — "Dado que el usuario tiene una sesion activa, cuando consulta sus citas, entonces recibe un listado"
+> - **E2E/UI (10%):** escenarios Gherkin (`Given/When/Then`) sobre flujos criticos, ej. con Cypress + cucumber-js
+
 ### Responsabilidades Especificas
 
 | Area | Detalle |
@@ -97,7 +101,7 @@
 | IA aplicada a QA (Claude) | Avanzado | Solido — flujo diario | Mantener |
 | GitHub Actions CI/CD | Avanzado | Intermedio | Mantener |
 | **Azure DevOps** | Avanzado | Sin experiencia | Alta |
-| **Postman / Newman** | Avanzado | Sin experiencia | Alta |
+| **Postman / Newman** | Avanzado | Intermedio | Alta |
 | **TestRail / Azure Test Plans** | Avanzado | Sin experiencia | Alta |
 | **Jest (Angular unit testing)** | Avanzado | Sin experiencia | Media |
 | **Go test (backend)** | Avanzado | Sin experiencia | Media |
@@ -168,7 +172,7 @@ Llegar preparado el primer día con una estrategia QA clara y un plan de acción
 
 ### Semana 1 — Escuchar y mapear (8–13 junio)
 - [ ] Conocer al equipo de desarrollo y producto
-- [ ] Entender el stack real del portal de pacientes
+- [ ] Entender el stack real del portal de pacientes y blua
 - [ ] Identificar qué procesos de QA existen hoy
 - [ ] Detectar los flujos más críticos del negocio
 - [ ] Conseguir acceso a Jira, repositorio y ambientes
@@ -195,7 +199,7 @@ Llegar preparado el primer día con una estrategia QA clara y un plan de acción
 
 ## Dominio BUPA
 
-- **Producto principal:** Portal de Pacientes BUPA Chile
+- **Producto principal:** Portal de Pacientes BUPA Chile y aplicación Blua
 - **Regulación relevante:** Ley 19.628 (protección de datos personales)
 - **Stack inferido:** Angular (por contexto del proyecto)
 - **Flujos críticos estimados:** carga del portal, login, recuperación de contraseña
