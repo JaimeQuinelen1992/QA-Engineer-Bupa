@@ -30,9 +30,9 @@ Cypress.Commands.add('visitPortal', () => {
 
 // Flujo de login de dos pasos con credenciales validas desde fixture
 // Uso: cy.loginBupa()
-// Credenciales en cypress/fixtures/auth/credenciales-validas.json (gitignored)
+// Credenciales en cypress/fixtures/auth/Prod_credenciales-validas.json (gitignored)
 Cypress.Commands.add('loginBupa', () => {
-  cy.fixture('auth/credenciales-validas').then((creds) => {
+  cy.fixture('auth/Prod_credenciales-validas').then((creds) => {
     cy.get('input[name="rut"]').type(creds.rut)
     cy.get('button[type="submit"]').first().click()
     cy.get('input[name="current-password"]', { timeout: 10000 }).should('be.visible')

@@ -2,7 +2,7 @@
 
 | Campo | Detalle |
 |-------|---------|
-| **Actualizado** | 09-06-2026 |
+| **Actualizado** | 11-06-2026 (organigrama completo recibido) |
 | **Fuente** | Organigrama parcial compartido por Jaime |
 
 ---
@@ -21,14 +21,21 @@
 
 ## Equipo de Tecnología
 
-| Nombre | Rol | Contacto |
-|--------|-----|----------|
+| Nombre | Rol | Notas |
+|--------|-----|-------|
 | Cristobal Becerra Abarca | Subgerente de Desarrollo de Productos Digitales | — |
-| Franco Nicolas Cabañas | Líder Técnico TI | — |
-| Jocelyn Pena Contreras | Jefe de Proyectos TI | — |
-| Javier Ulloa Dalencon | Jefe TI Portal Pacientes (por confirmar) | — |
-| Orlando Fabian Vasquez | Jefe de Proyectos TI — Integramédica CL / Bupa TI | — |
-| Macarena Andrea Catalan Catalan | Jefe Canales Digitales BCL DGA | — |
+| Franco Nicolas Cabañas | Líder Técnico TI BLUA y Portal Pacientes| — |
+| Jaime Giovanni Quiñelen Villar | Líder Técnico QA | Yo |
+| Jocelyn Pena Contreras | Jefe de Proyectos TI (Agile Scrum Master) | Lidera gestión Portal Pacientes / Blua |
+| Javier Ulloa Dalencon | Líder Técnico TIPortal Pacientes | — |
+| Orlando Fabian Vasquez | Jefe de Proyectos TI | Presta apoyo QA — Integramédica CL / Bupa TI |
+| Macarena Andrea Catalan Catalan | Product Owner — BLUA - Jefe Canales Digitales BCL DGA | — |
+| Simon Rocha Lagos | Product Owner Portal Pacientes| — |
+| Evelyn Mendez Gatica | Product Designer | Product Designer |
+| David Silva Pedroza | Desarrollador | - |
+| Jefferson Varela Freitez | Desarrollador | — |
+| Jorge Federico Pacheco | Desarrollador Frontend | Sucre, Bolivia |
+| Jose Alejandro Salas | Desarrollador | Guaranda, Ecuador |
 
 ---
 
@@ -42,23 +49,20 @@
 
 ## Equipo (rol por confirmar)
 
-| Nombre | Rol | Contacto |
-|--------|-----|----------|
-| David Silva Pedroza | — | — |
-| Evelyn Mendez Gatica | — | — |
-| Jefferson Varela Freitez | — | — |
-| Jorge Federico Pacheco | — | — |
-| Jose Alejandro Salas | — | — |
-| Simon Rocha Lagos | — | — |
+| Nombre | Rol | Notas |
+|--------|-----|-------|
+| Jose Angel Rodriguez Silva | — | Puerto La Cruz, Venezuela |
+| Luis Alberto Varela Bustos | — | — |
+| Katherine Gonzalez Toro | — | — |
 
 ---
 
 ## Células / Equipos
 
-| Célula | Descripción | Integrantes conocidos |
-|--------|-------------|----------------------|
-| Portal Pacientes | — | Javier Ulloa Dalencon (Jefe TI, por confirmar) |
-| Blua | — | — |
+| Célula | Descripción | Plataformas | Integrantes conocidos |
+|--------|-------------|-------------|----------------------|
+| Portal Pacientes | Portal de autoatención para pacientes | Web · Mobile | Javier Ulloa Dalencon (Jefe TI, por confirmar) |
+| Blua | Servicio de salud preventiva (exámenes) | Mobile (por ahora) | — |
 
 ---
 
